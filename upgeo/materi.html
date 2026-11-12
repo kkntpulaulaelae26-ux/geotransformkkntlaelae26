@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelajaran Transformasi Geometri - Materi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .active-tab {
+            border-bottom: 3px solid #3b82f6;
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .btn-back-nav {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(145deg, #7f8c8d, #6c7a89);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            border-bottom: 3px solid #4e5d6c;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.15s ease;
+        }
+        .btn-back-nav:hover {
+            background: linear-gradient(145deg, #95a5a6, #7f8c8d);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+        }
+        .btn-back-nav:active {
+            transform: translateY(2px);
+            border-bottom: 1px solid #4e5d6c;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <header class="bg-indigo-900 text-white shadow-lg sticky top-0 z-50 w-full">
+        <div class="w-full px-6 sm:px-8 lg:px-12 flex justify-between items-center h-16">
+            
+            <div class="flex items-center space-x-3">
+                <i data-lucide="shapes" class="w-8 h-8 text-indigo-400"></i>
+                <span class="font-bold text-xl tracking-wide">GeoTransformasi</span>
+            </div>
+
+            <div>
+                <a href="index.html" class="btn-back-nav">← Menu Utama</a>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <section id="page-materi" class="space-y-8">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-4">
+                <h1 class="text-3xl font-extrabold text-slate-900 flex items-center gap-3">
+                    <i data-lucide="book-open" class="text-indigo-600"></i> Pengertian Transformasi Geometri
+                </h1>
+                <p class="text-slate-600 leading-relaxed text-base md:text-lg">
+                </p>
+                <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 pt-4">
+                    <div class="p-4 bg-indigo-50 border border-indigo-100 rounded-xl flex flex-col items-center text-center">
+                        <i data-lucide="move" class="w-8 h-8 text-indigo-600 mb-2"></i>
+                        <h3 class="font-semibold text-slate-800 text-sm">Translasi</h3>
+                        <p class="text-xs text-slate-500 mt-1">Pergeseran posisi sejauh arah tertentu.</p>
+                    </div>
+                    <div class="p-4 bg-emerald-50 border border-emerald-100 rounded-xl flex flex-col items-center text-center">
+                        <i data-lucide="flip-horizontal" class="w-8 h-8 text-emerald-600 mb-2"></i>
+                        <h3 class="font-semibold text-slate-800 text-sm">Refleksi</h3>
+                        <p class="text-xs text-slate-500 mt-1">Pencerminan terhadap garis/titik.</p>
+                    </div>
+                    <div class="p-4 bg-amber-50 border border-amber-100 rounded-xl flex flex-col items-center text-center">
+                        <i data-lucide="rotate-cw" class="w-8 h-8 text-amber-600 mb-2"></i>
+                        <h3 class="font-semibold text-slate-800 text-sm">Rotasi</h3>
+                        <p class="text-xs text-slate-500 mt-1">Perputaran terhadap pusat dan sudut.</p>
+                    </div>
+                    <div class="p-4 bg-rose-50 border border-rose-100 rounded-xl flex flex-col items-center text-center">
+                        <i data-lucide="maximize-2" class="w-8 h-8 text-rose-600 mb-2"></i>
+                        <h3 class="font-semibold text-slate-800 text-sm">Dilatasi</h3>
+                        <p class="text-xs text-slate-500 mt-1">Perbesaran/perkecilan ukuran.</p>
+                    </div>
+                    <div class="p-4 bg-purple-50 border border-purple-100 rounded-xl flex flex-col items-center text-center sm:col-span-2 lg:col-span-1">
+                        <i data-lucide="layers" class="w-8 h-8 text-purple-600 mb-2"></i>
+                        <h3 class="font-semibold text-slate-800 text-sm">Komposisi</h3>
+                        <p class="text-xs text-slate-500 mt-1">Gabungan beberapa transformasi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="flex border-b border-slate-200 overflow-x-auto bg-slate-50">
+                    <button onclick="selectMateriTab('translasi')" id="tab-btn-translasi" class="px-5 py-3.5 font-semibold text-indigo-600 border-b-2 border-indigo-600 bg-white whitespace-nowrap">1. Translasi</button>
+                    <button onclick="selectMateriTab('refleksi')" id="tab-btn-refleksi" class="px-5 py-3.5 font-semibold text-slate-500 hover:text-indigo-600 whitespace-nowrap">2. Refleksi</button>
+                    <button onclick="selectMateriTab('rotasi')" id="tab-btn-rotasi" class="px-5 py-3.5 font-semibold text-slate-500 hover:text-indigo-600 whitespace-nowrap">3. Rotasi</button>
+                    <button onclick="selectMateriTab('dilatasi')" id="tab-btn-dilatasi" class="px-5 py-3.5 font-semibold text-slate-500 hover:text-indigo-600 whitespace-nowrap">4. Dilatasi</button>
+                    <button onclick="selectMateriTab('komposisi')" id="tab-btn-komposisi" class="px-5 py-3.5 font-semibold text-slate-500 hover:text-indigo-600 whitespace-nowrap">5. Komposisi Transformasi</button>
+                </div>
+
+                <div class="p-6 md:p-8">
+                    <div id="materi-translasi" class="space-y-6">
+                        <h2 class="text-2xl font-bold text-slate-900 border-b pb-2">Translasi (Pergeseran)</h2>
+                        <p class="text-slate-600 leading-relaxed">
+                            <strong>Translasi</strong> adalah perpindahan posisi suatu objek. Jika dinyatakan dalam koordinat Cartesius, translasi merupakan perpindahan titik-titik koordinat suatu objek ke arah dan jarak tertentu. Pada peristiwa translasi ini, ukuran dan bentuk objek tidak mengalami perubahan.
+                        </p>
+                        
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-4">
+                            <h3 class="font-bold text-lg text-slate-800">Persamaan Umum Translasi</h3>
+                            <p class="text-slate-600 text-sm">
+                                Jika titik P(x, y) ditranslasikan sejauh (a, b), akan dihasilkan titik P' dengan koordinat (x', y'). Secara matematis, koordinat akhir pada proses translasi dinyatakan sebagai berikut:
+                            </p>
+                            <div class="bg-white p-4 rounded-lg shadow-inner text-center font-mono text-lg overflow-x-auto">
+                                $$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} a \\ b \end{pmatrix} = \begin{pmatrix} x + a \\ y + b \end{pmatrix}$$
+                            </div>
+                            <div class="text-xs text-slate-600 space-y-1">
+                                <p><strong>Keterangan:</strong></p>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>\(P\begin{pmatrix} x \\ y \end{pmatrix}\) = koordinat titik awalnya</li>
+                                    <li>\(a\) = pergeseran pada sumbu-x (positif ke kanan, negatif ke kiri)</li>
+                                    <li>\(b\) = pergeseran pada sumbu-y (positif ke atas, negatif ke bawah)</li>
+                                    <li>\(P'\begin{pmatrix} x + a \\ y + b \end{pmatrix}\) = koordinat akhir setelah pergeseran</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="border-l-4 border-indigo-500 bg-indigo-50/50 p-5 rounded-r-xl space-y-3">
+                            <h4 class="font-bold text-indigo-900">Contoh Translasi Persegi ABCD</h4>
+                            <p class="text-slate-700 text-sm">
+                                Misal persegi ABCD dengan koordinat A(-3,4), B(-1,4), C(-3,2), dan D(-1,2) digeser 5 satuan ke kanan (a=5) dan 5 satuan ke bawah (b=-5).
+                            </p>
+                            <div class="bg-white p-4 rounded-lg border border-indigo-100 text-xs md:text-sm font-mono space-y-1">
+                                <p><strong>Penyelesaian:</strong></p>
+                                <p>• \(A' = (-3+5, 4+(-5)) = (2, -1)\)</p>
+                                <p>• \(B' = (-1+5, 4+(-5)) = (4, -1)\)</p>
+                                <p>• \(C' = (-3+5, 2+(-5)) = (2, -3)\)</p>
+                                <p>• \(D' = (-1+5, 2+(-5)) = (4, -3)\)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="materi-refleksi" class="hidden space-y-6">
+                        <h2 class="text-2xl font-bold text-slate-900 border-b pb-2">Refleksi (Pencerminan)</h2>
+                        <p class="text-slate-600 leading-relaxed">
+                            <strong>Refleksi</strong> atau pencerminan adalah perpindahan titik suatu objek pada bidang sesuai dengan sifat pembentukan bayangan pada cermin datar.
+                        </p>
+
+                        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                            <h3 class="font-bold text-slate-800 mb-2">Sifat-Sifat Refleksi:</h3>
+                            <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+                                <li>Jarak antara titik awal objek ke cermin sama dengan jarak titik akhir objek ke cermin.</li>
+                                <li>Garis penghubung antara objek awal dan akhirnya selalu tegak lurus cermin.</li>
+                                <li>Sumbu-x, sumbu-y, maupun garis khusus dianalogikan sebagai cermin.</li>
+                            </ul>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse border border-slate-200 rounded-lg text-sm">
+                                <thead>
+                                    <tr class="bg-indigo-900 text-white border-b border-indigo-950">
+                                        <th class="p-3">Jenis Refleksi</th>
+                                        <th class="p-3">Titik Awal</th>
+                                        <th class="p-3">Titik Bayangan (x', y')</th>
+                                        <th class="p-3">Persamaan Matriks / Formula</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-medium">Sumbu X</td>
+                                        <td class="p-3">(x, y)</td>
+                                        <td class="p-3 font-bold text-emerald-600">(x, -y)</td>
+                                        <td class="p-3 font-mono">\(\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}\)</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-medium">Sumbu Y</td>
+                                        <td class="p-3">(x, y)</td>
+                                        <td class="p-3 font-bold text-emerald-600">(-x, y)</td>
+                                        <td class="p-3 font-mono">\(\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}\)</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-medium">Titik Pusat (0,0)</td>
+                                        <td class="p-3">(x, y)</td>
+                                        <td class="p-3 font-bold text-emerald-600">(-x, -y)</td>
+                                        <td class="p-3 font-mono">\(\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}\)</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-medium">Garis y = x</td>
+                                        <td class="p-3">(x, y)</td>
+                                        <td class="p-3 font-bold text-emerald-600">(y, x)</td>
+                                        <td class="p-3 font-mono">\(\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}\)</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-medium">Garis y = -x</td>
+                                        <td class="p-3">(x, y)</td>
+                                        <td class="p-3 font-bold text-emerald-600">(-y, -x)</td>
+                                        <td class="p-3 font-mono">\(\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} 0 & -1 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}\)</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-medium">Garis x = h</td>
+                                        <td class="p-3">(x, y)</td>
+                                        <td class="p-3 font-bold text-emerald-600">(2h - x, y)</td>
+                                        <td class="p-3 font-mono">\(\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} 2h \\ 0 \end{pmatrix}\)</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-3 font-medium">Garis y = k</td>
+                                        <td class="p-3">(x, y)</td>
+                                        <td class="p-3 font-bold text-emerald-600">(x, 2k - y)</td>
+                                        <td class="p-3 font-mono">\(\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} 0 \\ 2k \end{pmatrix}\)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="border-l-4 border-emerald-500 bg-emerald-50/50 p-4 rounded-r-lg space-y-2">
+                            <h4 class="font-bold text-emerald-900">Contoh Soal Refleksi:</h4>
+                            <p class="text-slate-700 text-sm">
+                                Jika titik \(G(2, 5)\) dicerminkan terhadap garis y = -x, tentukan letak bayangan titik G!
+                            </p>
+                            <div class="bg-white p-3 rounded border border-emerald-100 font-mono text-xs md:text-sm">
+                                $$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} 0 & -1 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} 2 \\ 5 \end{pmatrix} = \begin{pmatrix} -5 \\ -2 \end{pmatrix}$$
+                                <strong>Hasil:</strong> \(G'(-5, -2)\)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="materi-rotasi" class="hidden space-y-6">
+                        <h2 class="text-2xl font-bold text-slate-900 border-b pb-2">Rotasi (Perputaran)</h2>
+                        <p class="text-slate-600 leading-relaxed">
+                            <strong>Rotasi</strong> adalah perpindahan titik-titik suatu objek pada bidang geometri dengan cara memutarnya sejauh sudut \(\alpha\). Arah rotasi mempengaruhi tanda sudutnya:
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-center gap-3">
+                                <i data-lucide="rotate-ccw" class="w-8 h-8 text-amber-600 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">Berlawanan Arah Jarum Jam</h4>
+                                    <p class="text-xs text-slate-600">Sudut bertanda <strong>Positif \((+\alpha)\)</strong></p>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-center gap-3">
+                                <i data-lucide="rotate-cw" class="w-8 h-8 text-amber-600 flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">Searah Arah Jarum Jam</h4>
+                                    <p class="text-xs text-slate-600">Sudut bertanda <strong>Negatif \((-\alpha)\)</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                            <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                                <h3 class="font-bold text-slate-800 mb-2">1. Rotasi Pusat O(0,0)</h3>
+                                <div class="bg-white p-3 rounded font-mono text-sm overflow-x-auto my-2">
+                                    $$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} \cos\alpha & -\sin\alpha \\ \sin\alpha & \cos\alpha \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}$$
+                                </div>
+                            </div>
+                            <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                                <h3 class="font-bold text-slate-800 mb-2">2. Rotasi Pusat P(a,b)</h3>
+                                <div class="bg-white p-3 rounded font-mono text-sm overflow-x-auto my-2">
+                                    $$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} \cos\alpha & -\sin\alpha \\ \sin\alpha & \cos\alpha \end{pmatrix} \begin{pmatrix} x - a \\ y - b \end{pmatrix} + \begin{pmatrix} a \\ b \end{pmatrix}$$
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-l-4 border-amber-500 bg-amber-50/50 p-4 rounded-r-lg space-y-2">
+                            <h4 class="font-bold text-amber-900">Contoh Soal Rotasi \(180^\circ\):</h4>
+                            <p class="text-slate-700 text-sm">
+                                Jika titik \(H(1, 3)\) dirotasikan sejauh \(180^\circ\) terhadap titik pusat (0,0), tentukan letak \(H'\)!
+                            </p>
+                            <div class="bg-white p-3 rounded border border-amber-100 font-mono text-xs md:text-sm">
+                                $$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} \cos 180^\circ & -\sin 180^\circ \\ \sin 180^\circ & \cos 180^\circ \end{pmatrix} \begin{pmatrix} 1 \\ 3 \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} 1 \\ 3 \end{pmatrix} = \begin{pmatrix} -1 \\ -3 \end{pmatrix}$$
+                                <strong>Hasil:</strong> \(H'(-1, -3)\)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="materi-dilatasi" class="hidden space-y-6">
+                        <h2 class="text-2xl font-bold text-slate-900 border-b pb-2">Dilatasi (Perbesaran / Perkecilan)</h2>
+                        <p class="text-slate-600 leading-relaxed">
+                            <strong>Dilatasi</strong> adalah perpindahan titik-titik suatu objek terhadap titik tertentu berdasarkan faktor pengali \((k)\). Peristiwa ini mengakibatkan perubahan ukuran objek.
+                        </p>
+
+                        <div class="bg-rose-50 border border-rose-200 p-5 rounded-xl space-y-2">
+                            <h3 class="font-bold text-rose-900">Pengaruh Faktor Pengali ($k$):</h3>
+                            <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+                                <li><strong>\(k > 1\)</strong>: Ukuran objek diperbesar dan searah sudut dilatasi awalnya.</li>
+                                <li><strong>\(k = 1\)</strong>: Tidak mengakibatkan perubahan ukuran atau posisi.</li>
+                                <li><strong>\(0 < k < 1\)</strong>: Ukuran objek diperkecil dan searah sudut dilatasi awalnya.</li>
+                                <li><strong>\(-1 < k < 0\)</strong>: Ukuran objek diperkecil dan berlawanan dengan sudut dilatasi awalnya.</li>
+                                <li><strong>\(k = -1\)</strong>: Ukuran tetap, namun arahnya berlawanan.</li>
+                                <li><strong>\(k < -1\)</strong>: Ukuran objek diperbesar dan berlawanan arah dengan sudut dilatasi awalnya.</li>
+                            </ul>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                            <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                                <h3 class="font-bold text-slate-800 mb-2">1. Dilatasi Pusat O(0,0)</h3>
+                                <div class="bg-white p-3 rounded font-mono text-sm overflow-x-auto my-2">
+                                    $$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} k & 0 \\ 0 & k \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} k \cdot x \\ k \cdot y \end{pmatrix}$$
+                                </div>
+                            </div>
+                            <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                                <h3 class="font-bold text-slate-800 mb-2">2. Dilatasi Pusat P(a,b)</h3>
+                                <div class="bg-white p-3 rounded font-mono text-sm overflow-x-auto my-2">
+                                    $$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} k(x - a) + a \\ k(y - b) + b \end{pmatrix}$$
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-l-4 border-rose-500 bg-rose-50/50 p-4 rounded-r-lg space-y-2">
+                            <h4 class="font-bold text-rose-900">Contoh Soal Dilatasi Pusat \(P(a,b)\):</h4>
+                            <p class="text-slate-700 text-sm">
+                                Titik \(B(2, -1)\) didilatasi terhadap pusat \(P(4, 2)\) dengan faktor pengali \(k = 2\). Tentukan \(B'\)!
+                            </p>
+                            <div class="bg-white p-3 rounded border border-rose-100 font-mono text-xs md:text-sm">
+                                $$x' = 2(2 - 4) + 4 = 2(-2) + 4 = 0$$
+                                $$y' = 2(-1 - 2) + 2 = 2(-3) + 2 = -4$$
+                                <strong>Hasil:</strong> \(B'(0, -4)\)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="materi-komposisi" class="hidden space-y-6">
+                        <h2 class="text-2xl font-bold text-slate-900 border-b pb-2">Komposisi Transformasi Geometri</h2>
+                        <p class="text-slate-600 leading-relaxed">
+                            <strong>Komposisi Transformasi</strong> adalah gabungan dari dua atau lebih transformasi yang dilakukan secara berurutan terhadap suatu objek geometri.
+                        </p>
+
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-4">
+                            <h3 class="font-bold text-lg text-slate-800">Prinsip Perkalian Matriks Komposisi</h3>
+                            <p class="text-slate-600 text-sm">
+                                Jika transformasi pertama memiliki matriks \(M_1\) dan dilanjutkan dengan transformasi kedua bermatriks \(M_2\), maka matriks komposisi total \(M\) dapat dituliskan dengan urutan perkalian dari kanan ke kiri:
+                            </p>
+                            <div class="bg-white p-4 rounded-lg shadow-inner text-center font-mono text-lg overflow-x-auto">
+                                $$M = M_2 \cdot M_1$$
+                            </div>
+                            <p class="text-xs text-slate-500">
+                                <em>Catatan: Transformasi yang dikerjakan terlebih dahulu ditulis paling kanan.</em>
+                            </p>
+                            <div class="bg-white p-4 rounded-lg shadow-inner text-center font-mono text-lg overflow-x-auto">
+                                $$\begin{pmatrix} x'' \\ y'' \end{pmatrix} = M_2 \cdot M_1 \cdot \begin{pmatrix} x \\ y \end{pmatrix}$$
+                            </div>
+                        </div>
+
+                        <div class="border-l-4 border-purple-500 bg-purple-50/50 p-4 rounded-r-lg space-y-2">
+                            <h4 class="font-bold text-purple-900">Contoh Soal Komposisi Transformasi:</h4>
+                            <p class="text-slate-700 text-sm">
+                                Titik \(A(2, 1)\) dicerminkan terhadap sumbu-X (\(M_1\)), kemudian dirotasikan \(90^\circ\) berlawanan arah jarum jam terhadap \((0,0)\) (\(M_2\)). Tentukan koordinat akhir \(A''\)!
+                            </p>
+                            <div class="bg-white p-3 rounded border border-purple-100 font-mono text-xs md:text-sm space-y-2">
+                                <p>\(M_1 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\), \(M_2 = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\)</p>
+                                <p>$$\begin{pmatrix} x'' \\ y'' \end{pmatrix} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \cdot \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 2 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$$</p>
+                                <p><strong>Hasil Akhir:</strong> \(A''(1, 2)\)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
+        <p>&copy; kkntlaelae26 - Media Pembelajaran Matematika</p>
+    </footer>
+
+    <script>
+        function selectMateriTab(type) {
+            const tabs = ['translasi', 'refleksi', 'rotasi', 'dilatasi', 'komposisi'];
+            tabs.forEach(t => {
+                document.getElementById(`materi-${t}`).classList.add('hidden');
+                document.getElementById(`tab-btn-${t}`).classList.remove('border-b-2', 'border-indigo-600', 'text-indigo-600', 'bg-white');
+                document.getElementById(`tab-btn-${t}`).classList.add('text-slate-500');
+            });
+
+            document.getElementById(`materi-${type}`).classList.remove('hidden');
+            document.getElementById(`tab-btn-${type}`).classList.add('border-b-2', 'border-indigo-600', 'text-indigo-600', 'bg-white');
+            document.getElementById(`tab-btn-${type}`).classList.remove('text-slate-500');
+            
+            if(window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        window.onload = function() {
+            lucide.createIcons();
+        };
+    </script>
+
+</body>
+</html>
